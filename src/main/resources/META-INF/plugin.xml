@@ -1,10 +1,12 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
-    <id>org.jetbrains.plugins.template</id>
-    <name>Template</name>
-    <vendor>JetBrains</vendor>
+<idea-plugin require-restart="true">
+    <id>com.hw.plugins.template</id>
+    <name>Child Component</name>
+    <vendor>Hubert Wang</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="org.jetbrains.plugins.template.services.MyApplicationService"/>
@@ -15,4 +17,13 @@
         <listener class="org.jetbrains.plugins.template.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+<!--    https://plugins.jetbrains.com/docs/intellij/extension-point-list.html#android-plugin-->
+<!--    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">-->
+<!--        <wizardTemplateProvider implementation="com.android.tools.idea.wizard.template.impl.WizardTemplateProviderImpl" />-->
+<!--    </extensions>-->
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="other.WizardTemplateProviderImpl" />
+    </extensions>
+
 </idea-plugin>
